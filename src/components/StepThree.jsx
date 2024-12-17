@@ -18,6 +18,10 @@ export const StepThree = ({ setCurrentStep }) => {
                 type="date"
                 className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] focus:outline-[#0CA5E9] focus:border-[0px] mt-[10px] text-[black] p-[12px]"
               />
+              <input
+                type="file"
+                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] focus:outline-[#0CA5E9] focus:border-[0px] mt-[10px] text-[black] p-[12px]"
+              />
             </div>
             <div className="w-[416px] flex">
               <button
