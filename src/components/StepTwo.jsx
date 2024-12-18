@@ -1,3 +1,5 @@
+import { Right } from "@/components/Right";
+import { Left } from "@/components/Left";
 export const StepTwo = ({ setCurrentStep }) => {
   return (
     <>
@@ -17,7 +19,7 @@ export const StepTwo = ({ setCurrentStep }) => {
               <input
                 type="text"
                 placeholder="ex: JohnDoe@gmail.com"
-                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] focus:outline-[#0CA5E9] focus:border-[0px] mt-[10px] text-[black] p-[12px]"
+                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] outline-[#0CA5E9] mt-[10px] text-[black] p-[12px]"
               />
             </div>
             <div>
@@ -26,37 +28,38 @@ export const StepTwo = ({ setCurrentStep }) => {
               <input
                 type="text"
                 placeholder="+976 88087277"
-                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] focus:outline-[#0CA5E9] focus:border-[0px] mt-[10px] text-[black] p-[12px]"
+                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] outline-[#0CA5E9] mt-[10px] text-[black] p-[12px]"
               />
             </div>
             <div>
               <h1 className="text-[#334155] mt-[20px]">Password</h1>
 
               <input
-                type="text"
-                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] focus:outline-[#0CA5E9] focus:border-[0px] mt-[10px] text-[black] p-[12px]"
+                type="password"
+                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] outline-[#0CA5E9]  mt-[10px] text-[black] p-[12px]"
               />
             </div>
             <div>
               <h1 className="text-[#334155] mt-[20px]">Confirm Password</h1>
 
               <input
-                type="text"
-                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] focus:outline-[#0CA5E9] focus:border-[0px] mt-[10px] text-[black] p-[12px]"
+                type="password"
+                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] outline-[#0CA5E9]  mt-[10px] text-[black] p-[12px]"
               />
             </div>
             <div className="w-[416px] flex">
               <button
                 onClick={() => setCurrentStep(1)}
-                className="w-[25%] h-[44px] bg-[#FFFFFF] text-[black] border-[black] border-[1px] flex justify-center items-center rounded-[6px] mt-[42px] mr-[5px] hover:bg-[#202124] hover:text-[white]"
+                className="group w-[25%] h-[44px] bg-[#FFFFFF] text-[black] border-[black] border-[1px] flex justify-center items-center rounded-[6px] mt-[42px] mr-[5px] hover:bg-[#202124] hover:text-[white]"
               >
-                <img src="left.png" className="w-[8px] mr-[10px]"/> Back
+                <Left /> <span className="ml-4">Back</span>
               </button>
               <button
                 onClick={() => setCurrentStep(3)}
-                className="w-[70%] h-[44px] bg-[#D6D8DB] text-[#A9ACAF] flex justify-center items-center rounded-[6px] mt-[42px] hover:bg-[#202124] hover:text-[white]"
+                className="group w-[70%] h-[44px] bg-[#D6D8DB] text-[#A9ACAF] flex justify-center items-center rounded-[6px] mt-[42px] hover:bg-[#202124] hover:text-[white]"
               >
-                Continue 2/3 <img src="right.png" className="w-[8px] ml-[10px]"/>
+                <span className="mr-4">Continue 2/3</span>
+                <Right />
               </button>
             </div>
           </div>

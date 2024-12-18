@@ -1,6 +1,42 @@
+'use client'
+
+import { useState } from 'react'
+import {Right} from '@/components/Right'
 export const StepOne = ({ setCurrentStep }) => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [nameInvalid, setNameInvalid] = useState(false);
+
+  const validateName = (name) => {
+    if(name ===''){
+      return true
+    }
+    const nameRegex = /^[a-zA-Z]+$/;
+    return nameRegex.test(name);
+  };
+
+
+  const handleFirstNameChange = (e) => {
+    const { value } = e.target;
+    setFirstName(value);
+    setNameInvalid(!validateName(value) || !validateName(lastName));
+  };
+
+  const handleLastNameChange = (e) => {
+    const { value } = e.target;
+    setLastName(value);
+    setNameInvalid(!validateName(firstName) || !validateName(value));
+  };
+
+  const handleUserNameChange = (e) => {
+    const { value } = e.target;
+    setUserName(value);
+  };
+
+  const canContinue = firstName && lastName && !nameInvalid && userName;
+  
   return (
-    <>
       <div className="flex justify-center items-center w-screen h-screen">
         <div className="w-[480px] h-[655px] bg-[#FFFFFF] rounded-[8px] p-[32px]">
           <div>
@@ -17,8 +53,11 @@ export const StepOne = ({ setCurrentStep }) => {
               <input
                 type="text"
                 placeholder="ex: John"
-                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] focus:outline-[#0CA5E9] focus:border-[0px] mt-[10px] text-[black] p-[12px]"
+                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] outline-[#0CA5E9]  mt-[10px] text-[black] p-[12px]"
+                onChange={handleFirstNameChange}
+                value={firstName}
               />
+              {!validateName(firstName) && <p className="text-red-500 text-[12px]">Invalid name. Only letters are allowed.</p>}
             </div>
             <div>
               <h1 className="text-[#334155] mt-[20px]">Last Name</h1>
@@ -26,27 +65,37 @@ export const StepOne = ({ setCurrentStep }) => {
               <input
                 type="text"
                 placeholder="Doe"
-                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] focus:outline-[#0CA5E9] focus:border-[0px] mt-[10px] text-[black] p-[12px]"
-              />
+                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] outline-[#0CA5E9] mt-[10px] text-[black] p-[12px]"
+                onChange={handleLastNameChange}
+              value={lastName}
+                />
+                {!validateName(lastName) && <p className="text-red-500 text-[12px]">Invalid name. Only letters are allowed.</p>}
             </div>
             <div>
               <h1 className="text-[#334155] mt-[20px]">Username</h1>
 
               <input
                 type="text"
-                placeholder="JohnDoe"
-                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] focus:outline-[#0CA5E9] focus:border-[0px] mt-[10px] text-[black] p-[12px]"
+                placeholder="JohnDoe123@!"
+                className="w-[416px] h-[38px] border-[#CBD5E1] border-[1px] rounded-[8px] outline-[#0CA5E9] mt-[10px] text-[black] p-[12px]"
+                onChange={handleUserNameChange}
+                value={userName}
               />
             </div>
             <button
-              onClick={() => setCurrentStep(2)}
-              className="w-[416px] h-[44px] bg-[#D6D8DB] text-[#A9ACAF] flex justify-center items-center rounded-[6px] mt-[100px] hover:bg-[#202124] hover:text-[white]"
+              onClick={() => canContinue && setCurrentStep(2) }
+              className="group w-[416px] h-[44px] bg-[#D6D8DB] text-[#A9ACAF] flex justify-center items-center rounded-[6px] mt-[100px]  hover:bg-[#202124] hover:text-[white]"
             >
-              Continue 1/3 <img src="right.png" className="w-[8px] ml-[10px]"/>
+              <span className=" mr-4"> Continue 1/3 </span>
+              <Right />
             </button>
+            
+            {!firstName && <p className="text-red-500 text-[12px]">Enter First Name</p>}
+            {!lastName && <p className="text-red-500 text-[12px]">Enter Last Name</p>}
+            {!userName && <p className="text-red-500 text-[12px]">Enter Nickname</p>}
           </div>
         </div>
       </div>
-    </>
+  
   );
 };
