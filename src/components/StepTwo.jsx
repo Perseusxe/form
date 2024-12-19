@@ -38,7 +38,7 @@ export const StepTwo = ({ setCurrentStep, form, setForm }) => {
   const handleRepeatPasswordChange = (e) => {
     const value = e.target.value;
     setRepeatPassword(value);
-    setPasswordMismatch(value && value !== password);
+    setPasswordMismatch(value && value !== form.password);
     setForm({ ...form, repeatPassword: value });
   };
 

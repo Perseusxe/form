@@ -16,7 +16,6 @@ const FormBody = ({ currentStep, setCurrentStep, form, setForm }) => {
     return <StepThree setCurrentStep={setCurrentStep} form={form} setForm={setForm} />;
   }
 };
-
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(1);
   const [form, setForm] = useState({
