@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { StepOne } from '@/components/StepOne';
 import { StepTwo } from '@/components/StepTwo';
 import { StepThree } from '@/components/StepThree';
+import { Submit } from '@/components/Submit';
 
 const FormBody = ({ currentStep, setCurrentStep, form, setForm }) => {
   if (currentStep === 1) {
@@ -14,6 +15,9 @@ const FormBody = ({ currentStep, setCurrentStep, form, setForm }) => {
   }
   if (currentStep === 3) {
     return <StepThree setCurrentStep={setCurrentStep} form={form} setForm={setForm} />;
+  }
+  if (currentStep === 4) {
+    return <Submit setCurrentStep={setCurrentStep} form={form} setForm={setForm} />;
   }
 };
 export default function Home() {
@@ -26,6 +30,8 @@ export default function Home() {
     firstName: '',
     lastName: '',
     userName: '',
+    date: '',
+    profile: '',
   });
 
   return (
