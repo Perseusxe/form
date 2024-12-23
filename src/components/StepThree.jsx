@@ -70,7 +70,7 @@ export const StepThree = ({ setCurrentStep, form, setForm }) => {
                     <img
                       src={profilePreview}
                       alt="Profile Preview"
-                      className="w-[100px] h-[100px] rounded-full"
+                      className="w-full h-full "
                     />
                   ) : (
                     <div className="flex-col flex justify-center items-center">
